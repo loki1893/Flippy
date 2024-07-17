@@ -9,11 +9,17 @@ import {
   Text,
   IconButton,
   useBreakpointValue,
+  Button
 } from '@chakra-ui/react';
 import { SearchIcon, HamburgerIcon } from '@chakra-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
   const isMobile = useBreakpointValue({ base: true, md: false });
+  const navigte = useNavigate() 
+  const goToLogin = () =>{
+    navigate('/UserLogin')
+  }
 
   return (
     <Box position="sticky" top="0px" w="full" bg="#2874f0" zIndex={1} borderBottom="1px solid lightgray" p={3} px={4} >
@@ -40,7 +46,13 @@ function NavBar() {
               _focus={{ border: '1px solid #2874f0' }}
             />
           </InputGroup>
+      
         </Flex>
+        <Box mr={{base:"15px" ,  md:"20px" , xl:"25px"}}
+        mt={{base:"5px"}}
+        >
+          <Button>Login</Button>
+          </Box>
 
         <Flex alignItems="center">
           <Box
@@ -51,11 +63,14 @@ function NavBar() {
             position="relative"
           >
                {!isMobile && (
+
+               
             <Box position="sticky" top="0px" cursor="pointer" mr={{ md: 4 }}>
               <Text fontSize="sm" color="white" fontWeight="bold">
                 Become a Seller
               </Text>
             </Box>
+            
           )}
             <svg
               xmlns="http://www.w3.org/2000/svg"
